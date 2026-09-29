@@ -64,7 +64,7 @@ public class CheckArraySteps {
     /**
      * Prints the welcome message and available navigation menu options to the console.
      */
-    private static void executeMenu() {
+    private static void showMenu() {
         System.out.println("Hello! This program checks if your array is sorted in ascending order.");
         System.out.println();
         System.out.println("1. Enter array");
@@ -82,7 +82,7 @@ public class CheckArraySteps {
 private static void chooseAnOptionInMenu(final Scanner scanner) {
     int choice = 0;
     while (choice != 2){
-        executeMenu();
+        showMenu();
         choice = validateInputOfInt(scanner);
 
         if (choice == 1){
