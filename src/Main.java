@@ -1,5 +1,13 @@
+/**
+ * Application entry point.
+ */
+public class Main {
 
-public static void main(String[] args) {
-
+    /* Main method tat serves as the execution starting point for the Java application.
+     *
+     * @param args command-line arguments (not used)
+     */
+    public static void main(String[] args) {
+        CheckArraySteps.startGame();
+    }
 }
-
