@@ -3,7 +3,8 @@
  */
 public class Main {
 
-    /* Main method tat serves as the execution starting point for the Java application.
+    /**
+     * Main method that serves as the execution starting point for the Java application.
      *
      * @param args command-line arguments (not used)
      */
