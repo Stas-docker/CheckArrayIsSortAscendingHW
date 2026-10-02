@@ -63,6 +63,7 @@ public class ArrayUtils {
         for (int i = 0; i < array.length - 1; i++) {
             if (array[i] < array[i + 1]) {
                 hasAscending = true;
+                break;
             }
         }
 
@@ -82,6 +83,7 @@ public class ArrayUtils {
         for (int i = 0; i < array.length - 1; i++) {
             if (array[i] > array[i + 1]) {
                 hasDescending = true;
+                break;
             }
         }
 
