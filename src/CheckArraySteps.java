@@ -6,27 +6,6 @@ import java.util.Scanner;
  */
 public class CheckArraySteps {
 
-    /**
-     * Represents the available options in the main menu.
-     */
-    public enum MenuOption {
-
-        /**
-         * Option to proceed with array creation and sorting evaluation.
-         */
-        ENTER_ARRAY,
-
-        /**
-         * Option to gracefully terminate the application loop.
-         */
-        EXIT,
-
-        /**
-         * Fallback option for unrecognized or invalid user inputs.
-         */
-        UNKNOWN
-
-    }
 
     /**
      * Starts the application, manages the main menu loop, and handles resource cleanup
@@ -43,63 +22,6 @@ public class CheckArraySteps {
 
             }
         }
-
-    }
-
-    /**
-     * Prompts the user to enter the size for the array.
-     *
-     * @param scanner the {@link Scanner} instance used for user input
-     * @return the specified number of elements for the array
-     */
-    private static int readLengthArray(final Scanner scanner) {
-
-        System.out.print("\nChoose how many elements should be in your Array: ");
-
-        final int numberOfElements = validateInput(scanner);
-
-        return numberOfElements;
-
-    }
-
-    /**
-     * Creates and populates an integer array based on user input.
-     *
-     * @param scanner the {@link Scanner} instance used for user input
-     * @return the populated array of integers
-     */
-    private static int[] createAnArray(final Scanner scanner) {
-
-        final int arrayLength = readLengthArray(scanner);
-        final int[] array = new int[arrayLength];
-
-        System.out.println("\nType the elements of your Array using ENTER: ");
-
-        for (int i = 0; i < array.length; i++) {
-            array[i] = validateInput(scanner);
-        }
-
-        return array;
-
-    }
-
-    /**
-     * Continuously prompts the user until a valid integer is entered.
-     *
-     * @param scanner the {@link Scanner} instance used for user input
-     * @return the validated integer value
-     */
-    private static int validateInput(final Scanner scanner) {
-
-        while (!scanner.hasNextInt()) {
-            System.out.println("\nInvalid input! Please enter a valid number: ");
-            scanner.nextLine();
-        }
-
-        final int number = scanner.nextInt();
-        scanner.nextLine();
-
-        return number;
 
     }
 
@@ -128,8 +50,8 @@ public class CheckArraySteps {
 
         showMenu();
 
-        int choice = validateInput(scanner);
-        MenuOption menuOption = getMenuOption(choice);
+        final int choice = ArrayUtils.readIntValue(scanner);
+        final MenuOption menuOption = getMenuOption(choice);
 
         return menuOption;
 
@@ -157,10 +79,10 @@ public class CheckArraySteps {
      */
     private static void processArrayChecking(final Scanner scanner) {
 
-        int[] array = createAnArray(scanner);
-        ArrayUtils.SortOrder isSorted = ArrayUtils.getSortType(array);
+        final int[] array = ArrayUtils.createAnArray(scanner);
+        final ArrayUtils.SortOrder sorted = ArrayUtils.getSortType(array);
 
-        System.out.println("Array is sorted: " + isSorted);
+        System.out.println("Array is sorted: " + sorted);
         System.out.println("-------------------------------------------------------------------");
 
     }
