@@ -1,3 +1,8 @@
+package utils;
+
+
+import enums.SortOrder;
+
 import java.util.Scanner;
 
 /**
@@ -6,90 +11,53 @@ import java.util.Scanner;
 public class ArrayUtils {
 
     /**
-     * Represents the sorting order or status of an array.
-     */
-    public enum SortOrder {
-
-        /**
-         * Indicates that the elements are arranged in non-decreasing order.
-         */
-        ASCENDING,
-
-        /**
-         * Indicates that the elements are arranged in non-increasing order.
-         */
-        DESCENDING,
-
-        /**
-         * Indicates that the elements are not sorted in any particular order.
-         */
-        UNSORTED
-
-    }
-
-    /**
-     * Determines the sorting type of the given array.
+     * Determines the sorting order of the array.
      *
-     * @param array the array of integers to check
-     * @return ASCENDING, DESCENDING, or UNSORTED depending on the array elements
+     * @param array array to check
+     * @return ASCENDING, DESCENDING, or UNSORTED
      */
     public static SortOrder getSortType(final int[] array) {
-        SortOrder sortOrder = SortOrder.ASCENDING;
-        boolean hasAsc = hasAscendingPair(array);
-        boolean hasDesc = hasDescendingPair(array);
+        SortOrder sortOrder = SortOrder.UNSORTED;
 
-        if (hasDesc) {
-            sortOrder = SortOrder.DESCENDING;
-        }
-
-        if (hasAsc && hasDesc) {
-            sortOrder = SortOrder.UNSORTED;
+        if (array.length >= 2) {
+            if (isAscending(array)) {
+                sortOrder = SortOrder.ASCENDING;
+            } else if (isDescending(array)) {
+                sortOrder = SortOrder.DESCENDING;
+            }
         }
 
         return sortOrder;
-
     }
 
     /**
-     * Checks if the array has at least one ascending pair (a[i] < a[i+1]).
-     *
-     * @param array the array of integers to check
-     * @return true if an ascending pair is found, false otherwise
+     * Checks if the array is strictly ascending.
      */
-    private static boolean hasAscendingPair(final int[] array) {
-
-        boolean hasPair = false;
+    public static boolean isAscending(int[] array) {
+        boolean isAscending = true;
 
         for (int i = 0; i < array.length - 1; i++) {
-            if (array[i] < array[i + 1]) {
-                hasPair = true;
-                break;
+            if (array[i] >= array[i + 1]) {
+                isAscending = false;
             }
         }
 
-        return hasPair;
-
+        return isAscending;
     }
 
     /**
-     * Checks if the array has at least one descending pair (a[i] > a[i+1]).
-     *
-     * @param array the array of integers to check
-     * @return true if a descending pair is found, false otherwise
+     * Checks if the array is strictly descending.
      */
-    private static boolean hasDescendingPair(final int[] array) {
-
-        boolean hasPair = false;
+    public static boolean isDescending(int[] array) {
+        boolean isDescending = true;
 
         for (int i = 0; i < array.length - 1; i++) {
-            if (array[i] > array[i + 1]) {
-                hasPair = true;
-                break;
+            if (array[i] <= array[i + 1]) {
+                isDescending = false;
             }
         }
 
-        return hasPair;
-
+        return isDescending;
     }
 
     /**
@@ -121,15 +89,15 @@ public class ArrayUtils {
      */
     private static int readLengthArray(final Scanner scanner) {
 
-        int numberOfElements = 0;
+        int numberOfElements = -1;
 
-        while (numberOfElements <= 0) {
+        while (numberOfElements < 0) {
 
             System.out.print("\nChoose how many elements should be in your Array: ");
             numberOfElements = readIntValue(scanner);
 
-            if (numberOfElements <= 0) {
-                System.out.println("\nThe number of elements in an array cannot be 0 or less, try again:");
+            if (numberOfElements < 0) {
+                System.out.println("\nThe number of elements in an array cannot be less than 0, try again:");
             }
         }
 

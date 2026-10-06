@@ -1,3 +1,9 @@
+package steps;
+
+import enums.MenuOption;
+import enums.SortOrder;
+import utils.ArrayUtils;
+
 import java.util.Scanner;
 
 /**
@@ -5,7 +11,6 @@ import java.util.Scanner;
  * input validation, and application flow.
  */
 public class CheckArraySteps {
-
 
     /**
      * Starts the application, manages the main menu loop, and handles resource cleanup
@@ -80,7 +85,7 @@ public class CheckArraySteps {
     private static void processArrayChecking(final Scanner scanner) {
 
         final int[] array = ArrayUtils.createAnArray(scanner);
-        final ArrayUtils.SortOrder sorted = ArrayUtils.getSortType(array);
+        final SortOrder sorted = ArrayUtils.getSortType(array);
 
         System.out.println("Array is sorted: " + sorted);
         System.out.println("-------------------------------------------------------------------");

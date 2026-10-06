@@ -1,3 +1,4 @@
+package enums;
 
 /**
  * Represents the available options in the main menu.
@@ -18,6 +19,5 @@ public enum MenuOption {
      * Fallback option for unrecognized or invalid user inputs.
      */
     UNKNOWN
-
 }
 
